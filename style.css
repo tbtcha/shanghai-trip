@@ -1,0 +1,80 @@
+/* Общие стили */
+body {
+  background: #111;
+  color: #fff;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+/* --- Masonry-стиль (как Pinterest) --- */
+.gallery {
+  column-count: 4;     /* количество колонок по умолчанию */
+  column-gap: 20px;    /* расстояние между колонками */
+  padding: 20px;
+}
+
+.gallery a {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100%;
+  break-inside: avoid; /* важно для masonry */
+}
+
+/* --- Картинки --- */
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.5));
+  will-change: transform, opacity;
+  transition: transform 0.3s ease;
+
+  /* появление */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards, levitate 3s ease-in-out infinite 1s;
+}
+
+/* hover эффект */
+.gallery img:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+/* --- Анимация левитации --- */
+@keyframes levitate {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* --- Анимация появления --- */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 1200px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .gallery {
+    column-count: 1;
+  }
+}

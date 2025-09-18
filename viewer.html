@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Просмотр фото</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #000;
+      margin: 0;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+  <img id="photo" src="" alt="Фото">
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const imgName = params.get("img");
+    if (imgName) {
+      document.getElementById("photo").src = "images/" + imgName;
+    }
+  </script>
+</body>
+</html>
