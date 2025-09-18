@@ -18,6 +18,12 @@
       max-height: 100%;
       border-radius: 12px;
       box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
@@ -25,9 +31,9 @@
   <img id="photo" src="" alt="Фото">
   <script>
     const params = new URLSearchParams(window.location.search);
-    const imgName = params.get("img");
-    if (imgName) {
-      document.getElementById("photo").src = "images/" + imgName;
+    const imgUrl = params.get("img");
+    if (imgUrl) {
+      document.getElementById("photo").src = imgUrl; // теперь берём полный путь
     }
   </script>
 </body>
